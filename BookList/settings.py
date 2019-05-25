@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 
-#import django_heroku
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +29,7 @@ SECRET_KEY = '0$xgx!%_*t+n#kja8xcx+vt^hf=48zw8m2b27@yy+^&k$(04ll'
 DEBUG = True
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['djangoapi9704.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['djangoapi970.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -125,4 +125,4 @@ STATIC_ROOT= os.path.join(BASE_DIR,'BookApi/static/')
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
