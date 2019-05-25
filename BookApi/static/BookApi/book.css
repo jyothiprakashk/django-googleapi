@@ -1,0 +1,43 @@
+#body {
+    background-color: black
+}
+.title {
+    color: #2C3335;
+    float: center;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+.section {
+    color: blue;
+}
+#delete {
+    float: right;
+
+}
+.input {
+    height: 40px;
+}
+#add {
+    height: 40px;
+}
+#infoapi {
+    position: relative;
+}
+.author {
+    font-family: 'Berkshire Swash', cursive;
+    color:black; 
+}
+#description {
+    font-family: 'Roboto Slab', serif;
+}
+.publish {
+    font-family: monospace;
+}
+#main-footer {
+    margin-top: 27%;
+}
+#search-font {
+    text-align: center;
+    border-top: 80px;
+    color: whitesmoke;
+}

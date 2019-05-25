@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css"/>
+     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Pacifico|Roboto+Slab&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="{% static 'BookApi/book.css' %}" rel="stylesheet"> 
+
+    <link href="{% static 'BookApi/bootstrap-theme.min.css' %}" rel="stylesheet">
+   
+  </head>
+
+  <body id="body">
+    <section class="hero is-info">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            My Book Self
+          </h1>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-offset">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  {{ form.name }}
+                </div>
+                <div class="control">
+                  <button type="submit" class="button is-primary" id="add">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+      <section class="section">
+            <div class="container">
+              <div class="rows">
+                <div class="row is-offset-4 is-4">
+                  {% for book_Api in book_data %}
+                  <div class="box">
+                    <article class="media">
+                      <div class="media-left"><br>
+                        <figure class="image is-60x60">
+                          <img src="{{ book_Api.icon }}" alt="image">
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <span class="title" id="tan"
+                              >{{ book_Api.title }}</span
+                            ><br><br>
+                            <span class="publish" 
+                              >{{ book_Api.publishdate }}</span
+                            ><br><br>
+                            <span class="author">{{ book_Api.author }}</span>
+                            <br />
+                            <br />
+                            
+                           <span id="description"> {{ book_Api.description|slice:":200" }}....
+                                      </span>
+                          </p>
+                          <a href="{{ book_Api.infoLink}}" class="button is-info" id="infoapi">Info</a>
+                         <div id="favourite-section">
+                          <form action="/delete/{{ book_Api.id }}" method="POST">
+                          {% csrf_token %}
+
+                          <button type="submit" class="button is-info" id="delete"><i class="fas fa-trash"></i>
+                          </button>
+                        </form>
+
+                          
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </section>
+      <!-- Footer -->
+       <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    
+     Copyright &copy Google Api
+  </footer>
+  </body>
+</html>
+
+
+
